@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("hehe.jpg");
+            background-size: cover;
+            background-position: center;
+            color: #000000;
+        }
+        
+        h1 {
+            color: #ba2035;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 50px;
+        }
+        
+        p {
+            text-align: center;
+            font-size: 20px;
+        }
+        
+        form {
+            margin: 0 auto;
+            max-width: 400px;
+            background-color: #f4dfdf;
+            padding: 33px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        select,
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #765050;
+            border-radius: 4px;
+        }
+        
+        input[type="submit"] {
+            background-color: #ba2035;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #002144;
+        }
+        
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+        
+        th {
+            background-color: #ba2035;
+            color: white;
+        }
+        
+        a {
+            color: #003366;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Attendance System</h1>
+
+    <p>Welcome to the BSCPE 2A DAY. Please fill in the following details:</p>
+
+    <form id="attendanceForm">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="middleName">Middle Name:</label>
+        <input type="text" id="middleName" name="middleName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status">
+            <option value="absent"></option>
+            <option value="absent">Absent</option>
+            <option value="present">Present</option>
+            <option value="excused">Excused</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <table id="attendanceTable">
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Timestamp</th>
+        </tr>
+    </table>
+
+    <script>
+        document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var lastName = document.getElementById('lastName').value;
+            var firstName = document.getElementById('firstName').value;
+            var middleName = document.getElementById('middleName').value;
+            var email = document.getElementById('email').value;
+            var status = document.getElementById('status').value;
+            var date = document.getElementById('date').value;
+            var timestamp = new Date().toLocaleString();
+
+            var table = document.getElementById('attendanceTable');
+            var newRow = table.insertRow(table.rows.length);
+
+            var lastNameCell = newRow.insertCell(0);
+            var firstNameCell = newRow.insertCell(1);
+            var middleNameCell = newRow.insertCell(2);
+            var emailCell = newRow.insertCell(3);
+            var statusCell = newRow.insertCell(4);
+            var dateCell = newRow.insertCell(5);
+            var timestampCell = newRow.insertCell(6);
+
+            lastNameCell.innerHTML = lastName;
+            firstNameCell.innerHTML = firstName;
+            middleNameCell.innerHTML = middleName;
+            emailCell.innerHTML = email;
+            statusCell.innerHTML = status;
+            dateCell.innerHTML = date;
+            timestampCell.innerHTML = timestamp;
+
+            document.getElementById('lastName').value = '';
+            document.getElementById('firstName').value = '';
+            document.getElementById('middleName').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('status').value = 'absent';
+            document.getElementById('date').value = '';
+        });
+    </script>
+</body>
+
+</html>
